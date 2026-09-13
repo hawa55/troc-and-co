@@ -51,5 +51,5 @@ export async function POST(req: NextRequest) {
   const buffer = Buffer.from(await file.arrayBuffer());
   await fs.writeFile(path.join(uploadsDir, filename), buffer);
 
- return NextResponse.json({ url: \/api/files/${filename}`, type: isVideo ? "video" : "image" });
+   return NextResponse.json({ url: `/api/files/${filename}`, type: isVideo ? "video" : "image" });
 }
