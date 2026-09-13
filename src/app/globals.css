@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f6f1e7;
+  --ink: #201b2c;
+  --market-green: #2f6f4e;
+  --market-green-dark: #234f38;
+  --stamp-red: #e8542e;
+  --mustard: #f4b940;
+  --line: #ddd3bf;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-market: var(--market-green);
+  --color-market-dark: var(--market-green-dark);
+  --color-stamp: var(--stamp-red);
+  --color-mustard: var(--mustard);
+  --color-line: var(--line);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, .font-display {
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  font-weight: 600;
+}
+
+.tag-price {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  transform: rotate(-2deg);
+}
+
+::selection {
+  background: var(--mustard);
+  color: var(--ink);
+}
