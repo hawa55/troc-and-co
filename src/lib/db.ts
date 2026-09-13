@@ -19,6 +19,10 @@ declare global {
 function createDb(): DatabaseSync {
   ensureDataDir();
   const db = new DatabaseSync(DB_PATH);
+  // busy_timeout doit être réglé AVANT tout le reste : si plusieurs process
+  // (ex: le build parallèle de Next.js) touchent le fichier en même temps,
+  // on attend au lieu d'échouer immédiatement avec "database is locked".
+  db.exec("PRAGMA busy_timeout = 10000;");
   db.exec("PRAGMA journal_mode = WAL;");
   db.exec("PRAGMA foreign_keys = ON;");
 
