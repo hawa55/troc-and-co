@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Vidéo trop lourde (50 Mo max)" }, { status: 400 });
   }
 
-  const uploadsDir = path.join(process.cwd(), "public", "uploads");
+  const uploadsDir = path.join(process.cwd(), "data", "uploads");
   await fs.mkdir(uploadsDir, { recursive: true });
 
   const ext = file.name.split(".").pop() || (isVideo ? "mp4" : "jpg");
@@ -51,5 +51,5 @@ export async function POST(req: NextRequest) {
   const buffer = Buffer.from(await file.arrayBuffer());
   await fs.writeFile(path.join(uploadsDir, filename), buffer);
 
-  return NextResponse.json({ url: `/uploads/${filename}`, type: isVideo ? "video" : "image" });
+ return NextResponse.json({ url: \/api/files/${filename}`, type: isVideo ? "video" : "image" });
 }
